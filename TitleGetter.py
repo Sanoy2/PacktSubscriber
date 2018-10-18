@@ -1,10 +1,8 @@
-from MyHTMLParser import MyHTMLParser
 from HTMLGetter import HTMLGetter
 from TitleFinder import TitleFinder
 
 class TitleGetter():
     def __init__(self):
-        self.htmlParser = MyHTMLParser()
         self.url = "https://www.packtpub.com/packt/offers/free-learning"
     
     def GetTitle(self):

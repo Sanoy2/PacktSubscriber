@@ -1,10 +1,14 @@
 from TitleGetter import TitleGetter
 
-def main():
-    print("Hello world")
+def GetTitle():
     Getter = TitleGetter()
     title = Getter.GetTitle()
-    print(title)
+    return title
+
+
+def main():
+    print(GetTitle())
+    
 
 if __name__ == "__main__":
     main()
