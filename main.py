@@ -1,14 +1,8 @@
-from TitleGetter import TitleGetter
-
-def GetTitle():
-    Getter = TitleGetter()
-    title = Getter.GetTitle()
-    return title
-
+from Subscriber import Subscriber
 
 def main():
-    print(GetTitle())
-    
+    subscriber = Subscriber()
+    subscriber.Start("20:18") 
 
 if __name__ == "__main__":
     main()

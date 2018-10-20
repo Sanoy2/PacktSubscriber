@@ -2,7 +2,7 @@ import urllib.request
 
 class HTMLGetter():
     def GetHTML(self, url):
-        return self.Mock()  # comment to turn mocking html off
+        # return self.Mock()  # comment to turn mocking html off
         fp = urllib.request.urlopen(url)
         mybytes = fp.read()
         html = mybytes.decode("utf8")
