@@ -2,24 +2,28 @@ import smtplib
 from FileReader import FileReader
 
 class MyEmailSender:
-    def Send(self, title):
+    def __init__(self, loginDataFileName):
+        loginData = self.GetLoginData(loginDataFileName)
+        self.login = loginData[0]
+        self.password = loginData[1]
+
+
+    def Send(self, ebookTitle, addresseesFileName):
         session = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         
-        loginData = self.GetLoginData()
-        messageFrom = loginData[0]
-        login = loginData[0]
-        password = loginData[1]
+        messageFrom = self.login
+        login = self.login
+        password = self.password
         
         subject = "Packt free ebook informer"
 
-        message = title
         message = """ 
         Today's free ebook from packt: 
-        %s """ % (title)
+        %s """ % (ebookTitle)
 
         session.login(login, password) 
 
-        addressees = self.GetAddressees()
+        addressees = self.GetAddressees(addresseesFileName)
         for messTo in addressees:
             emailText = """  
             From: %s  
@@ -30,14 +34,14 @@ class MyEmailSender:
             
             """ % (messageFrom, messTo, subject, message)
             
-            session.sendmail(messageFrom, messTo, emailText) 
+            session.sendmail(messageFrom, messTo, emailText)
         
-        session.quit() 
+        session.quit()
 
-    def GetAddressees(self):
+    def GetAddressees(self, fileName):
         fileReader = FileReader()
-        return fileReader.ReadLines("addressees.txt")
+        return fileReader.ReadLines(fileName)
 
-    def GetLoginData(self):
+    def GetLoginData(self, fileName):
         fileReader = FileReader()
-        return fileReader.ReadLines("loginData.txt")
+        return fileReader.ReadLines(fileName)

@@ -5,6 +5,9 @@ import schedule
 import time
 
 class Subscriber:
+    def __init__(self):
+        self.Sender = MyEmailSender("loginData.txt")
+
     def Start(self, hour):
         schedule.every().day.at(hour).do(self.DoTheJob)
         while True:
@@ -23,5 +26,4 @@ class Subscriber:
 
 
     def SendMail(self, title):
-        Sender = MyEmailSender()
-        Sender.Send(title)
+        self.Sender.Send(title, "addressees.txt")
