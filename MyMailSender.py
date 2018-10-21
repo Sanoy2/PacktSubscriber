@@ -3,6 +3,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from FileReader import FileReader
 
+
 class MyMailSender:
     def Send(self, ebookTitle):
         for address in self.addresses:
@@ -16,7 +17,6 @@ class MyMailSender:
 
         session.quit()
 
-
     def GetMessage(self, address, htmlContent):
         message = MIMEMultipart()
         message['From'] = self.login
@@ -24,7 +24,6 @@ class MyMailSender:
         message['Subject'] = "Packthub free ebook title subscription"
         message.attach(MIMEText(htmlContent, 'html'))
         return message
-
 
     def GetHTMLConent(self, ebookTitle):
         html = """
@@ -42,8 +41,8 @@ class MyMailSender:
                 </div>
                 <br>
                 <br>
-                <p> 
-                    If you want to cancel this subscription please contact me: {email} 
+                <p>
+                    If you want to cancel this subscription please contact me: {email}
                 </p>
                 <p>
                     I am going to attach free ebook's cover soon :)
@@ -51,10 +50,10 @@ class MyMailSender:
             </body>
         </html>
         """.format(
-            theTitle = ebookTitle,
-            email = self.login,
-            link = "https://www.packtpub.com/",
-            freeEbookLink = "https://www.packtpub.com/packt/offers/free-learning"
+            theTitle=ebookTitle,
+            email=self.login,
+            link="https://www.packtpub.com/",
+            freeEbookLink="https://www.packtpub.com/packt/offers/free-learning"
         )
         return html
 
@@ -62,13 +61,11 @@ class MyMailSender:
         fileReader = FileReader()
         self.addresses = fileReader.ReadLines(addresseesFileName)
 
-
     def SetLoginDataByFileName(self, loginDataFilename):
-        fileReader = FileReader()         
+        fileReader = FileReader()
         loginData = fileReader.ReadLines(loginDataFilename)
         self.login = loginData[0]
         self.password = loginData[1]
-
 
     def PrintAddresses(self):
         for address in self.addresses:

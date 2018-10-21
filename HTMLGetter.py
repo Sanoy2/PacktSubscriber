@@ -1,5 +1,6 @@
 import urllib.request
 
+
 class HTMLGetter():
     def GetHTML(self, url):
         # return self.Mock()  # comment to turn mocking html off

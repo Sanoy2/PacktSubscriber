@@ -11,17 +11,14 @@ class Subscriber:
             schedule.run_pending()
             time.sleep(1)
 
-
     def DoTheJob(self):
         title = self.GetTitle()
         self.SendMail(title)
-
 
     def GetTitle(self):
         Getter = TitleGetter()
         title = Getter.GetTitle()
         return title
-
 
     def SendMail(self, title):
         NewSender = MyMailSender()

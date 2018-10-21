@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
+
 class TitleFinder():
     def FindTitle(self, html):
         lookingFor = "title-bar-title"
