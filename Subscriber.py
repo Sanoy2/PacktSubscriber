@@ -14,6 +14,7 @@ class Subscriber:
             schedule.run_pending()
             time.sleep(1)
 
+
     def DoTheJob(self):
         title = self.GetTitle()
         self.SendMail(title)
