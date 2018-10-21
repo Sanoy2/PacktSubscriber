@@ -1,5 +1,5 @@
 from TitleGetter import TitleGetter
-from NewMailSender import NewMailSender
+from MyMailSender import MyMailSender
 import schedule
 import time
 
@@ -24,7 +24,7 @@ class Subscriber:
 
 
     def SendMail(self, title):
-        NewSender = NewMailSender()
+        NewSender = MyMailSender()
         NewSender.SetAddressesByFileName("addressees.txt")
         NewSender.SetLoginDataByFileName("loginData.txt")
         NewSender.Send(title)

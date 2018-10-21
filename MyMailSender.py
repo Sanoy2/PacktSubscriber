@@ -3,7 +3,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from FileReader import FileReader
 
-class NewMailSender:
+class MyMailSender:
     def Send(self, ebookTitle):
         for address in self.addresses:
             htmlContent = self.GetHTMLConent(ebookTitle)
