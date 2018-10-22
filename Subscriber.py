@@ -4,7 +4,6 @@ from MessagesFormer import MessagesFormer
 import schedule
 import time
 
-
 class Subscriber:
     def Start(self, hour):
         schedule.every().day.at(hour).do(self.DoTheJob)

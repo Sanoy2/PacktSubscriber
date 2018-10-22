@@ -20,5 +20,5 @@ class MessagesFormer():
 
     def GetSenderAddress(self):
         fileReader = FileReader()
-        address = fileReader.ReadLines("loginData.txt")[0]
+        address = fileReader.ReadOneLine("senderAddress.txt")
         return address
