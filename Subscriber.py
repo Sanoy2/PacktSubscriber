@@ -1,8 +1,8 @@
 from TitleGetter import TitleGetter
 from MyMailSender import MyMailSender
+from MessagesFormer import MessagesFormer
 import schedule
 import time
-
 
 class Subscriber:
     def Start(self, hour):
@@ -20,8 +20,9 @@ class Subscriber:
         title = Getter.GetTitle()
         return title
 
-    def SendMail(self, title):
-        NewSender = MyMailSender()
-        NewSender.SetAddressesByFileName("addressees.txt")
-        NewSender.SetLoginDataByFileName("loginData.txt")
-        NewSender.Send(title)
+    def SendMail(self, ebookTitle):
+        mailSender = MyMailSender()
+        messagesFormer = MessagesFormer()
+        messages = messagesFormer.FormAllMessages(ebookTitle)
+        mailSender.Send(messages)
+
