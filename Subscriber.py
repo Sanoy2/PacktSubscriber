@@ -1,6 +1,7 @@
 from TitleGetter import TitleGetter
 from MyMailSender import MyMailSender
 from MessagesFormer import MessagesFormer
+from HTMLGetter import HTMLGetter
 import schedule
 import time
 
@@ -16,8 +17,10 @@ class Subscriber:
         self.SendMail(title)
 
     def GetTitle(self):
+        htmlGetter = HTMLGetter()
+        html = htmlGetter.GetHTML()
         Getter = TitleGetter()
-        title = Getter.GetTitle()
+        title = Getter.GetTitle(html)
         return title
 
     def SendMail(self, ebookTitle):

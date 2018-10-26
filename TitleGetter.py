@@ -1,18 +1,13 @@
-from HTMLGetter import HTMLGetter
-from TitleFinder import TitleFinder
-
+from bs4 import BeautifulSoup
 
 class TitleGetter():
-    def __init__(self):
-        self.url = "https://www.packtpub.com/packt/offers/free-learning"
+    def GetTitle(self, html):
+        lookingFor = "title-bar-title"
+        soup = BeautifulSoup(html, 'html.parser')
+        div = soup.find("div", {"id": lookingFor})
 
-    def GetTitle(self):
-        html = self.GetHtml()
-        finder = TitleFinder()
-        title = finder.FindTitle(html)
+        soup = BeautifulSoup(str(div), 'lxml')
+
+        title = soup.find('h1').text
+
         return title
-
-    def GetHtml(self):
-        Getter = HTMLGetter()
-        html = Getter.GetHTML(self.url)
-        return html
