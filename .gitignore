@@ -104,8 +104,9 @@ venv.bak/
 .mypy_cache/
 
 # special files
-addressees.txt
 loginData.txt
+addressees.txt
+senderAddress.txt
 
 # vscode
 .vscode

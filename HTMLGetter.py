@@ -1,9 +1,13 @@
 import urllib.request
 
+
 class HTMLGetter():
-    def GetHTML(self, url):
+    def __init__(self):
+        self.url = "https://www.packtpub.com/packt/offers/free-learning"
+
+    def GetHTML(self):
         # return self.Mock()  # comment to turn mocking html off
-        fp = urllib.request.urlopen(url)
+        fp = urllib.request.urlopen(self.url)
         mybytes = fp.read()
         html = mybytes.decode("utf8")
         fp.close()
