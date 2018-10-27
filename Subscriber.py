@@ -1,7 +1,6 @@
-from TitleGetter import TitleGetter
 from MyMailSender import MyMailSender
 from MessagesFormer import MessagesFormer
-from HTMLGetter import HTMLGetter
+from MessageData import MessageData
 import schedule
 import time
 
@@ -13,19 +12,17 @@ class Subscriber:
             time.sleep(1)
 
     def DoTheJob(self):
-        title = self.GetTitle()
-        self.SendMail(title)
+        messageData = self.GetMessageData()
+        self.SendMail(messageData)
 
-    def GetTitle(self):
-        htmlGetter = HTMLGetter()
-        html = htmlGetter.GetHTML()
-        Getter = TitleGetter()
-        title = Getter.GetTitle(html)
-        return title
+    def GetMessageData(self):
+        messageData = MessageData()
+        messageData.DownloadContent()
+        return messageData
 
-    def SendMail(self, ebookTitle):
+    def SendMail(self, messageData):
         mailSender = MyMailSender()
         messagesFormer = MessagesFormer()
-        messages = messagesFormer.FormAllMessages(ebookTitle)
+        messages = messagesFormer.FormAllMessages(messageData)
         mailSender.Send(messages)
 

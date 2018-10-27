@@ -6,4 +6,4 @@ class CoverGetter():
         soup = BeautifulSoup(html, 'html.parser')
         div = soup.find("div", {"class": lookingFor})
         soup = BeautifulSoup(str(div), 'lxml')
-        print(soup.find('img')['src'])
+        return soup.find('img')['src']
