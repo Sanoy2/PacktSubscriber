@@ -31,9 +31,6 @@ class MessageFormer():
                 <p>
                     If you want to cancel this subscription please contact me: {email}
                 </p>
-                <p>
-                    I am going to attach free ebook's cover soon :)
-                </p>
             </body>
         </html>
         """.format(
