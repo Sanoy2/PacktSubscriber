@@ -1,16 +1,17 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from MessageData import MessageData
 
 class MessageFormer():
-    def FormMessage(self, ebookTitle, messFrom, messTo):
+    def FormMessage(self, messageData, messFrom, messTo):
         message = MIMEMultipart()
         message['From'] = messFrom
         message['To'] = messTo
         message['Subject'] = "Packthub free ebook title subscription"
-        message.attach(MIMEText(self.GetHTMLConent(ebookTitle, messFrom), 'html'))
+        message.attach(MIMEText(self.GetHTMLConent(messageData, messFrom), 'html'))
         return message
 
-    def GetHTMLConent(self, ebookTitle, messFrom):
+    def GetHTMLConent(self, messageData, messFrom):
         html = """
         <html>
             <head>
@@ -18,6 +19,7 @@ class MessageFormer():
             <body>
                 <div>
                     <h1> {theTitle} </h1>
+                    <img src="{coverSrc}">
                     <h3> Is today's free ebook on <a href="{link}"> Packthub </a></h3>
                     <br>
                     <h2>
@@ -35,7 +37,8 @@ class MessageFormer():
             </body>
         </html>
         """.format(
-            theTitle = ebookTitle,
+            theTitle = messageData.title,
+            coverSrc = messageData.coverSrc,
             email = messFrom,
             link = "https://www.packtpub.com/",
             freeEbookLink = "https://www.packtpub.com/packt/offers/free-learning"
